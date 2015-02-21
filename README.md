@@ -37,18 +37,21 @@ r.listspiders(project: "project1")
 
 # connect to default site at http://localhost:6800/
 r = RestScrapyd.new
-
-# using a default project
-r = RestScrapyd.new project: "project1"
+# and set a default project
+r.project = "project1"
 r.listspiders
 # => ["spider1", "spider2"]
 r.listversions
 # => ["123456-master"]
+
+# you can also specify a default project on construction
+r = RestScrapyd.new project: "project1"
 r.schedule("spider1", "123456-master")
 # => "1234567890abcdef1234567890abcdef"
 ```
 
-For more information, see the [documentation](http://rubydoc.info/github/wvengen/rest-scrapyd).
+For more information, see the [RestScrapyd](http://rubydoc.info/github/wvengen/rest-scrapyd/RestScrapyd.html)
+and [Scrapyd API](http://scrapyd.readthedocs.org/en/latest/api.html) documentation.
 
 
 Copyright

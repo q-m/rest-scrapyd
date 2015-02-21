@@ -17,16 +17,18 @@ RestScrapyd = RC::Builder.client do
   use RC::Cache         , nil, 600
 end
 
-module RestScrapyd::Client
+# Don't define a `RestScrapyd::Client` and include it in the class to avoid yardoc choking
+class RestScrapyd
   include RestCore
 
-  # Default project name (can be passed as hash argument to constructor)
+  # @!attribute project
+  # Default project name (can also be passed as hash argument to constructor).
   attr_accessor :project
 
   # Add a version to a project, creating the project if it doesn’t exist.
   # @param version [String] Project version
   # @param egg [String, IO] Filename or file to upload, must be a Scrapy egg
-  # @return [Hash<String, Object>] Response, right now just `{"spiders": <n>}`
+  # @return [Hash<String, Object>] Response, right now just +{"spiders": <n>}+
   # @see http://scrapyd.readthedocs.org/en/latest/api.html#addversion-json
   def addversion(version, egg, project=self.project)
     egg = File.open(egg, 'rb') if egg.is_a? String
@@ -36,7 +38,8 @@ module RestScrapyd::Client
   # Schedule a spider run (also known as a job).
   # @param spider [String] Spider name
   # @param version [String] Project version
-  # @param project [String] Project name
+  # @param settings [Hash<String, String>] Additional Scrapy settings
+  # @option settings [String] :project ({self.project}) Project name
   # @return [String] Job id
   # @see http://scrapyd.readthedocs.org/en/latest/api.html#schedule-json
   def schedule(spider, version, settings={})
@@ -98,8 +101,4 @@ module RestScrapyd::Client
   def delproject(project)
     post('delproject.json', project: project)
   end
-end
-
-class RestScrapyd
-  include RestScrapyd::Client
 end
