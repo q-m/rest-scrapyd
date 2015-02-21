@@ -4,7 +4,7 @@
 require 'rest-core'
 
 RestScrapyd = RC::Builder.client do
-  use RC::Timeout       , 10
+  use RC::Timeout       , 3
 
   use RC::DefaultSite   , 'http://localhost:6800/'
   use RC::DefaultHeaders, {'Accept' => 'application/json'}
