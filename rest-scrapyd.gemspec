@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.homepage    = 'https://github.com/wvengen/ruby-rest-scrapyd'
   s.license     = 'MIT'
 
-  s.extra_rdoc_files = ["README.md", "LICENSE.md"]
+  s.extra_rdoc_files = ["README.md", "LICENSE"]
   s.files            = Dir["lib/**/*"] + s.extra_rdoc_files
   s.test_files       = s.files.grep(%r[^test/])
 
