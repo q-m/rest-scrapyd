@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
 
   s.extra_rdoc_files = ["README.md", "LICENSE"]
   s.files            = Dir["lib/**/*"] + s.extra_rdoc_files
-  s.test_files       = s.files.grep(%r[^test/])
+  s.test_files       = Dir["test/**/*"]
 
   s.require_paths    = ["lib"]
   s.rdoc_options     = ["--charset=UTF-8"]
