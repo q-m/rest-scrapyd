@@ -17,7 +17,11 @@ RestScrapyd = RC::Builder.client do
   use RC::Cache         , nil, 600
 end
 
+
 # Don't define a `RestScrapyd::Client` and include it in the class to avoid yardoc choking
+# (plus two newlines to avoid this getting into the documentation)
+
+
 class RestScrapyd
   include RestCore
 
