@@ -8,6 +8,7 @@ RestScrapyd = RC::Builder.client do
 
   use RC::DefaultSite   , 'http://localhost:6800/'
   use RC::DefaultHeaders, {'Accept' => 'application/json'}
+  use RC::AuthBasic     , nil, nil
 
   use RC::CommonLogger  , nil
   use RC::ErrorHandler  , lambda {|env| RuntimeError.new(env[RC::RESPONSE_BODY]['message']) }

@@ -48,6 +48,9 @@ r.listversions
 r = RestScrapyd.new project: "project1"
 r.schedule("spider1", "123456-master")
 # => "1234567890abcdef1234567890abcdef"
+
+# http basic is also possible, when running scrapyd behind a reverse proxy
+r = RestScrapyd.new site: "https://example.com:6843/", username: "deploy", password: "s3cret"
 ```
 
 For more information, see the [RestScrapyd](http://rubydoc.info/github/wvengen/rest-scrapyd/RestScrapyd.html)
