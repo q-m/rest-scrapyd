@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'rest-scrapyd'
-  s.version     = '0.1.2'
+  s.version     = '0.1.3'
   s.date        = '2015-02-21'
   s.authors     = ['wvengen']
   s.email       = 'dev-rails@willem.engen.nl'
