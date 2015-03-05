@@ -12,7 +12,7 @@ RestScrapyd = RC::Builder.client do
 
   use RC::CommonLogger  , nil
   use RC::ErrorHandler  , lambda {|env| RuntimeError.new(env[RC::RESPONSE_BODY]['message']) }
-  use RC::ErrorDetector , lambda {|env| env[RC::RESPONSE_BODY]['status'] != 'ok'}
+  use RC::ErrorDetector , lambda {|env| env[RC::RESPONSE_BODY]['status'] != 'ok' rescue false }
   use RC::ErrorDetectorHttp
   use RC::JsonResponse  , true
   use RC::Cache         , nil, 600
