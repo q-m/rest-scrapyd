@@ -51,6 +51,13 @@ Pork::API.describe RestScrapyd do
   end
 
   would 'error code' do
+    skip # Pending rest-core#16'
+    stub_request(:get, 'http://localhost:6800/listprojects.json').
+      to_return(:body => '<html><body><p>whoops</p></body></html>', :status => 500)
+    lambda { new.listprojects }.should.raise(RuntimeError)
+  end
+
+  would 'error message' do
     stub_request(:get, 'http://localhost:6800/listprojects.json').
       to_return(:body => '{"status": "error", "message": "whoops"}')
     lambda { new.listprojects }.should.raise(RuntimeError)
