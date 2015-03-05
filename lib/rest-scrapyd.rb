@@ -44,12 +44,20 @@ class RestScrapyd
   # @param spider [String] Spider name
   # @param version [String] Project version
   # @param settings [Hash<String, String>] Additional Scrapy settings
-  # @option settings [String] :project ({self.project}) Project name
+  # @param arguments [Hash<String, String>] Additional spider arguments
+  # @option arguments [String] :project ({self.project}) Project name
   # @return [String] Job id
   # @see http://scrapyd.readthedocs.org/en/latest/api.html#schedule-json
-  def schedule(spider, version, settings={})
-    settings = {project: self.project, spider: spider}.merge(settings)
-    post('schedule.json', settings)['jobid']
+  def schedule(spider, version, settings={}, arguments={})
+    # +setting+ may appear multiple times, so can't use hash
+    params = {project: self.project, spider: spider}.to_a
+    params += settings.to_a.map{|k,v| ["setting", "#{k}=#{v}"]}
+    params += arguments.to_a
+    # rest-core doesn't (yet) support array payload, encode ourselves
+    params.map{|p| p[0] = p[0].to_s} # like stringify_keys
+    params = RestCore::Middleware.percent_encode(params)
+    s_headers = headers.merge({'Content-Type' => 'application/x-www-form-urlencoded'})
+    post('schedule.json', params, {}, headers: s_headers)['jobid']
   end
 
   # Cancel a scheduled or running job
