@@ -1,7 +1,7 @@
 rest-scrapyd
 ============
 [![Gem Version](https://badge.fury.io/rb/rest-scrapyd.svg)](http://badge.fury.io/rb/rest-scrapyd)
-[![Documentation](http://b.repl.ca/v1/yard-docs-blue.png)](http://rubydoc.info/github/wvengen/rest-scrapyd)
+[![Documentation](http://b.repl.ca/v1/yard-docs-blue.png)](http://rubydoc.info/github/q-m/rest-scrapyd)
 
 Ruby client for the [Scrapyd](http://scrapyd.readthedocs.org/) REST API
 built on top of [rest-core](https://github.com/godfat/rest-core).
@@ -53,7 +53,7 @@ r.schedule("spider1", "123456-master")
 r = RestScrapyd.new site: "https://example.com:6843/", username: "deploy", password: "s3cret"
 ```
 
-For more information, see the [RestScrapyd](http://rubydoc.info/github/wvengen/rest-scrapyd/RestScrapyd.html)
+For more information, see the [RestScrapyd](http://rubydoc.info/github/q-m/rest-scrapyd/RestScrapyd.html)
 and [Scrapyd API](http://scrapyd.readthedocs.org/en/latest/api.html) documentation.
 
 

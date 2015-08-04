@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.email       = 'dev-rails@willem.engen.nl'
   s.summary     = 'REST client for the Scrapyd API'
   s.description = 'REST client for the Scrapyd API, built with rest-core.'
-  s.homepage    = 'https://github.com/wvengen/rest-scrapyd'
+  s.homepage    = 'https://github.com/q-m/rest-scrapyd'
   s.license     = 'MIT'
 
   s.extra_rdoc_files = ["README.md", "LICENSE"]
